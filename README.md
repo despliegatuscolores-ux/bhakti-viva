@@ -150,7 +150,3 @@ Este proyecto constituye el cuarto y último volumen de una tetralogía unificad
 3. **Diseño para la Quietud:** Sin notificaciones intrusivas ni mecánicas de retención adictiva. La tecnología se orienta a cerrar la pantalla y retornar a la presencia viva.
 
 ---
-
-## 📄 Licencia
-
-Publicado bajo la Licencia **MIT**. Consulta el archivo `LICENSE` para conocer los términos de uso, modificación y distribución abierta.
