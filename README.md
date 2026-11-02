@@ -76,54 +76,6 @@ Módulo pedagógico basado en el *Bhāgavata Purāṇa* (7.5.23) para explorar y
 * Buscador en tiempo real por palabras clave, versos o autores con botón para fijar cualquier enseñanza en la práctica del día.
 
 ---
-
-## 🏛️ Arquitectura Técnica
-
-Diseñado para garantizar portabilidad absoluta, longevidad y velocidad instantánea sin requerir mantenimiento de dependencias:
-
-| Capa | Implementación | Propósito |
-|---|---|---|
-| **Estructura** | HTML5 Semántico Puro | Accesibilidad integral y carga inmediata en cualquier navegador. |
-| **Estética y Paleta** | Tailwind CSS CDN + Variables CSS | Paleta de templo místico nocturno: caoba sagrado (`#0b0608`), oro azafrán (`#f59e0b`), pétalo de rosa carmesí (`#f43f5e`) y pergamino cálido (`#fdfbf7`). |
-| **Tipografía** | Cormorant Garamond + Cinzel + Inter | Elegancia editorial renacentista y sánscrita con tipografías de respaldo seguro del sistema (`Georgia`, `system-ui`). |
-| **Lógica** | JavaScript ES6+ Vanilla | Control de estado reactivo y modular sin frameworks intermediarios ni transpiladores. |
-| **Motor Sonoro** | Web Audio API Nativa | Síntesis acústica procedural en tiempo real de armonio indio con modulación de fuelle y crótalos ceremoniales. |
-| **Persistencia** | Web Storage API (`localStorage`) | Privacidad 100% aislada en el dispositivo del usuario. Sin cookies, servidores externos ni telemetría. |
-
----
-
-## 🚀 Puesta en Marcha
-
-### Uso Local Inmediato
-No requiere Node.js, npm, compilación ni configuración previa:
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/<tu-usuario>/bhakti-viva.git
-
-# 2. Entrar en la carpeta
-cd bhakti-viva
-
-# 3. Abrir en cualquier navegador moderno
-open index.html        # macOS
-xdg-open index.html    # Linux
-start index.html       # Windows
-```
-
-### Despliegue en GitHub Pages (Gratuito y Permanente)
-
-1. En tu cuenta de GitHub, crea un nuevo repositorio llamado `bhakti-viva`.
-2. Sube el archivo de la aplicación renombrado como `index.html` en la raíz del repositorio, junto con este `README.md` y el archivo de licencia `LICENSE`.
-3. Ve a la pestaña **Settings** del repositorio.
-4. En el menú lateral izquierdo, haz clic en **Pages**.
-5. En **Build and deployment > Branch**, selecciona la rama `main` (o `master`) y la carpeta `/ (root)`.
-6. Haz clic en **Save**. En un par de minutos tu aplicación estará publicada globalmente en:
-   ```text
-   https://<tu-usuario>.github.io/bhakti-viva/
-   ```
-
----
-
 ## 📜 La Tetralogía Contemplativa
 
 Este proyecto constituye el cuarto y último volumen de una tetralogía unificada que abarca las cuatro dimensiones maestras del despertar interior:
@@ -139,8 +91,6 @@ Este proyecto constituye el cuarto y último volumen de una tetralogía unificad
 │ El Hilo de la Calma  │ El Sendero Lúcido    │ El Tejido Vivo    │ El Fuego del Amor    │
 │ Cese y contención    │ Vacuidad y atención  │ Energía y asombro │ Rendición y entrega  │
 └──────────────────────┴──────────────────────┴───────────────────┴──────────────────────┘
-```
-
 ---
 
 ## 🛡️ Privacidad y Ética Digital
