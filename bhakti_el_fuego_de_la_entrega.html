@@ -1,0 +1,1707 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BHAKTI · El Fuego de la Entrega | Śaraṇāgati & Prema</title>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Cormorant Garamond para elegancia mística & Inter para legibilidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cinzel:wght@500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            serif: ['"Cormorant Garamond"', 'Georgia', 'serif'],
+            cinzel: ['Cinzel', 'serif'],
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          },
+          colors: {
+            night: {
+              950: '#0b0608',
+              900: '#11090d',
+              850: '#1a0e14',
+              800: '#24141c',
+              700: '#351c29',
+              600: '#482738',
+            },
+            saffron: {
+              400: '#fbbf24',
+              500: '#f59e0b',
+              600: '#d97706',
+              700: '#b45309',
+            },
+            rosepetal: {
+              400: '#fb7185',
+              500: '#f43f5e',
+              600: '#e11d48',
+              700: '#be123c',
+              900: '#4c0519',
+            },
+            parchment: {
+              50: '#fdfbf7',
+              100: '#fbf5eb',
+              200: '#f4e9d6',
+              300: '#e7d4b7',
+              400: '#c5ae8c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Estilos devocionales y transiciones suaves */
+    * {
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+    }
+
+    body {
+      background-color: #0b0608;
+      color: #fbf5eb;
+    }
+
+    .altar-card {
+      background: linear-gradient(145deg, rgba(26, 14, 20, 0.94) 0%, rgba(17, 9, 13, 0.96) 100%);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.65), 0 0 20px rgba(244, 63, 94, 0.05);
+      backdrop-filter: blur(12px);
+    }
+
+    .tab-active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.22) 0%, rgba(244, 63, 94, 0.25) 100%) !important;
+      border-color: rgba(245, 158, 11, 0.6) !important;
+      color: #fbbf24 !important;
+      box-shadow: 0 0 18px rgba(245, 158, 11, 0.25);
+    }
+
+    .flame-glow {
+      box-shadow: 0 0 35px rgba(245, 158, 11, 0.3), inset 0 0 25px rgba(244, 63, 94, 0.2);
+    }
+
+    /* Animación de disolución y fuego en el altar */
+    @keyframes offeringDissolve {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+        filter: blur(0px) brightness(1);
+      }
+      50% {
+        transform: scale(0.96) translateY(-8px);
+        opacity: 0.7;
+        filter: blur(2px) brightness(1.6);
+        color: #fbbf24;
+      }
+      100% {
+        transform: scale(0.9) translateY(-20px);
+        opacity: 0;
+        filter: blur(8px) brightness(2.5);
+      }
+    }
+
+    .dissolving {
+      animation: offeringDissolve 2.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+
+    /* Scrollbar sutil en bronce cálido */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b0608;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(245, 158, 11, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(245, 158, 11, 0.6);
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col antialiased selection:bg-rosepetal-600/30 selection:text-saffron-400">
+
+  <!-- ================= NOTIFICACIÓN TOAST SUTIL ================= -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none transition-all duration-300 bg-night-850 text-parchment-100 border border-saffron-500/40 px-5 py-3 rounded-2xl shadow-2xl text-xs font-medium flex items-center space-x-3 shadow-saffron-500/10">
+    <span id="toast-icon" class="text-base">🌹</span>
+    <span id="toast-msg">Ofrenda del corazón recibida</span>
+  </div>
+
+  <!-- ================= ENCABEZADO Y SELECTOR DE TETRALOGÍA ================= -->
+  <header class="border-b border-night-800 bg-night-950/95 backdrop-blur-md sticky top-0 z-40">
+    
+    <!-- Barra Superior: Tetralogía Contemplativa -->
+    <div class="border-b border-night-800/80 bg-night-900/90 py-1.5 px-4 text-center">
+      <div class="max-w-6xl mx-auto flex items-center justify-between text-[11px] font-cinzel text-parchment-300 tracking-wider">
+        <span class="hidden md:inline text-parchment-400 font-semibold">Tetralogía Contemplativa</span>
+        <div class="flex items-center space-x-3 sm:space-x-4 mx-auto md:mx-0">
+          <a href="../sutra-yoga/" class="opacity-60 hover:opacity-100 hover:text-saffron-400 transition">
+            Vol. I · Yoga
+          </a>
+          <span class="text-night-700">✦</span>
+          <a href="../sutra-dharma/" class="opacity-60 hover:opacity-100 hover:text-saffron-400 transition">
+            Vol. II · Dharma
+          </a>
+          <span class="text-night-700">✦</span>
+          <a href="../tantra-viva/" class="opacity-60 hover:opacity-100 hover:text-saffron-400 transition">
+            Vol. III · Tantra
+          </a>
+          <span class="text-night-700">✦</span>
+          <span class="text-saffron-400 font-bold border-b border-saffron-500 pb-0.5">
+            Vol. IV · Bhakti
+          </span>
+        </div>
+        <span class="hidden md:inline text-rosepetal-400/80 text-[10px]">Śaraṇāgati & Prema</span>
+      </div>
+    </div>
+
+    <!-- Barra Principal -->
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-4">
+      
+      <!-- Marca / Logotipo -->
+      <div class="flex items-center space-x-3 cursor-pointer shrink-0" onclick="switchTab('daily')">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-rosepetal-900 via-night-800 to-night-850 border border-saffron-500/40 flex items-center justify-center text-rosepetal-400 font-serif text-xl shadow-lg">
+          🌹
+        </div>
+        <div>
+          <span class="font-cinzel tracking-widest text-base sm:text-lg font-bold text-parchment-100 block leading-tight">BHAKTI</span>
+          <span class="text-[9px] sm:text-[10px] tracking-widest uppercase text-saffron-400 font-medium">El Fuego de la Entrega</span>
+        </div>
+      </div>
+
+      <!-- Menú Desktop Píldoras -->
+      <nav class="hidden lg:flex items-center space-x-1 text-xs font-semibold tracking-wider uppercase font-cinzel">
+        <button onclick="switchTab('daily')" id="nav-daily" class="nav-btn px-3 py-2 rounded-xl text-parchment-300 hover:text-saffron-400 border border-transparent transition">
+          Bhavā Viva
+        </button>
+        <button onclick="switchTab('altar')" id="nav-altar" class="nav-btn px-3 py-2 rounded-xl text-parchment-300 hover:text-saffron-400 border border-transparent transition">
+          Altar del Vaciamiento
+        </button>
+        <button onclick="switchTab('japa')" id="nav-japa" class="nav-btn px-3 py-2 rounded-xl text-parchment-300 hover:text-saffron-400 border border-transparent transition">
+          Japa Mālā (108)
+        </button>
+        <button onclick="switchTab('navadha')" id="nav-navadha" class="nav-btn px-3 py-2 rounded-xl text-parchment-300 hover:text-saffron-400 border border-transparent transition">
+          9 Vías (Navadhā)
+        </button>
+        <button onclick="switchTab('journal')" id="nav-journal" class="nav-btn px-3 py-2 rounded-xl text-parchment-300 hover:text-saffron-400 border border-transparent transition">
+          Hṛdaya Patra
+        </button>
+        <button onclick="switchTab('compendium')" id="nav-compendium" class="nav-btn px-3 py-2 rounded-xl text-parchment-300 hover:text-saffron-400 border border-transparent transition">
+          Compendio
+        </button>
+      </nav>
+
+      <!-- Contador de Ofrendas & Armonio Sintético -->
+      <div class="flex items-center space-x-2 sm:space-x-3 shrink-0">
+        <!-- Contador de Rosas / Ofrendas continuas -->
+        <div class="flex items-center space-x-1.5 bg-night-850 border border-saffron-500/30 px-3 py-1.5 rounded-full text-xs" title="Ofrendas del corazón realizadas">
+          <span class="text-rosepetal-400 animate-pulse">🌹</span>
+          <span class="font-semibold text-parchment-200" id="streak-counter">0 ofrendas</span>
+        </div>
+
+        <!-- Botón de Armonio Indio en Dron -->
+        <button onclick="toggleHarmonium()" id="harmonium-btn" class="p-2 sm:px-3 sm:py-1.5 rounded-xl border border-saffron-500/40 bg-night-850 hover:bg-saffron-500/10 text-saffron-400 text-xs font-cinzel flex items-center space-x-1.5 transition" title="Activar/Pausar Armonio Devocional en Re">
+          <span id="harmonium-icon">🪗</span>
+          <span class="hidden sm:inline" id="harmonium-btn-text">Armonio</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Menú Móvil con desplazamiento horizontal suave -->
+    <div class="flex lg:hidden overflow-x-auto px-4 py-2 space-x-2 border-t border-night-800 text-xs uppercase font-cinzel font-semibold no-scrollbar">
+      <button onclick="switchTab('daily')" id="mob-nav-daily" class="whitespace-nowrap px-3 py-1.5 rounded-lg bg-night-850 border border-transparent">Bhavā</button>
+      <button onclick="switchTab('altar')" id="mob-nav-altar" class="whitespace-nowrap px-3 py-1.5 rounded-lg bg-night-850 border border-transparent">Altar</button>
+      <button onclick="switchTab('japa')" id="mob-nav-japa" class="whitespace-nowrap px-3 py-1.5 rounded-lg bg-night-850 border border-transparent">Japa Mālā</button>
+      <button onclick="switchTab('navadha')" id="mob-nav-navadha" class="whitespace-nowrap px-3 py-1.5 rounded-lg bg-night-850 border border-transparent">9 Vías</button>
+      <button onclick="switchTab('journal')" id="mob-nav-journal" class="whitespace-nowrap px-3 py-1.5 rounded-lg bg-night-850 border border-transparent">Diario</button>
+      <button onclick="switchTab('compendium')" id="mob-nav-compendium" class="whitespace-nowrap px-3 py-1.5 rounded-lg bg-night-850 border border-transparent">Compendio</button>
+    </div>
+  </header>
+
+  <!-- ================= CONTENEDOR PRINCIPAL ================= -->
+  <main class="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 py-6 sm:py-10">
+
+    <!-- ================= SECCIÓN 1: BHAVĀ VIVA (AFORISMO DEL DÍA) ================= -->
+    <section id="view-daily" class="view-content space-y-8">
+      
+      <!-- Introducción Teológica y Contemplativa -->
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-xs uppercase tracking-widest text-saffron-400 font-cinzel font-bold">El Camino del Corazón Rendido</span>
+        <h1 class="text-3xl sm:text-4xl font-serif font-bold text-parchment-100">Vaciar para que Dios Habite en Ti</h1>
+        <p class="text-sm text-parchment-300">
+          El intelecto analiza y el asceta renuncia; pero el devoto (*Bhakta*) se rinde por amor. La libertad no es una conquista del ego, sino el regalo de descansar en las manos del Amado.
+        </p>
+      </div>
+
+      <!-- Tarjeta del Aforismo Devocional Activo -->
+      <div class="altar-card rounded-3xl p-6 sm:p-10 relative overflow-hidden">
+        
+        <!-- Encabezado de la Tarjeta -->
+        <div class="flex items-center justify-between border-b border-night-700/80 pb-4 mb-6">
+          <div class="flex items-center space-x-2">
+            <span class="px-2.5 py-1 rounded-md text-xs font-cinzel font-bold bg-rosepetal-950/80 border border-rosepetal-700/50 text-rosepetal-400" id="daily-source-tag">
+              Nārada Bhakti Sūtras 2
+            </span>
+            <span class="text-xs uppercase tracking-wider font-semibold text-saffron-400" id="daily-bhav-tag">
+              Parama Prema Rūpā
+            </span>
+          </div>
+
+          <button onclick="pickRandomBhava()" class="text-xs text-parchment-300 hover:text-saffron-400 flex items-center space-x-1.5 bg-night-800/80 px-3 py-1.5 rounded-xl border border-night-700 hover:border-saffron-500/40 transition" title="Inspirar otro verso">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+            <span>Inspirar otro</span>
+          </button>
+        </div>
+
+        <!-- Verso en Sánscrito / Lengua Sagrada y Traducción -->
+        <div class="space-y-4 text-center my-6">
+          <div class="text-2xl sm:text-3xl font-serif text-parchment-100 tracking-wide italic font-normal" id="daily-sanskrit">
+            sā tv asmin parama-prema-rūpā |
+          </div>
+          <div class="text-xs tracking-widest text-saffron-400/80 font-mono" id="daily-phonetic">
+            [ saa tv asmin parama-prema-ruupaa ]
+          </div>
+          <div class="text-xl sm:text-2xl font-serif text-saffron-400 font-semibold max-w-2xl mx-auto pt-2 leading-relaxed" id="daily-translation">
+            «La devoción es, en su naturaleza esencial, el amor supremo e incondicional hacia lo Divino.»
+          </div>
+        </div>
+
+        <!-- Dimensiones de Integración: Clave del Corazón y Micro-práctica -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-night-700/80">
+          
+          <div class="bg-night-850/80 p-5 rounded-2xl border border-night-700">
+            <h4 class="text-xs font-bold tracking-widest uppercase text-saffron-400 font-cinzel flex items-center space-x-2 mb-2">
+              <span>🕯️</span>
+              <span>La Clave del Corazón (Sin Comercio Espiritual)</span>
+            </h4>
+            <p class="text-sm leading-relaxed text-parchment-200" id="daily-insight">
+              Bhakti no es pedir favores ni negociar con Dios. Es el anhelo puro de fundir la pequeña voluntad personal en el Amor infinito, reconociendo que todo lo que tenemos y somos ya le pertenece.
+            </p>
+          </div>
+
+          <div class="bg-rosepetal-950/30 p-5 rounded-2xl border border-rosepetal-900/40">
+            <h4 class="text-xs font-bold tracking-widest uppercase text-rosepetal-400 font-cinzel flex items-center space-x-2 mb-2">
+              <span>🌹</span>
+              <span>Micro-Práctica de Entrega Inmediata</span>
+            </h4>
+            <p class="text-sm leading-relaxed text-parchment-200" id="daily-practice">
+              Ante tu próxima tarea del día, suspira interiormente y di: «Esto no lo hago por mi vanidad o mi miedo; lo ofrendo como una flor en el altar de la Vida».
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Botones de Acción de la Tarjeta -->
+        <div class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4">
+          <button id="btn-mark-lived" onclick="markBhavaLived()" class="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-saffron-600 to-saffron-500 hover:from-saffron-500 hover:to-saffron-400 text-night-950 font-cinzel font-bold text-xs tracking-wider flex items-center justify-center space-x-2 shadow-lg transition">
+            <span class="text-base">🌹</span>
+            <span id="btn-lived-text">Ofrendar mi jornada hoy</span>
+          </button>
+
+          <div class="flex items-center space-x-3 w-full sm:w-auto">
+            <button onclick="openBhavaNoteModal()" class="w-full sm:w-auto px-4 py-3 rounded-2xl border border-saffron-500/30 bg-night-850 hover:bg-night-800 text-xs font-cinzel tracking-wider font-semibold text-parchment-200 flex items-center justify-center space-x-2">
+              <span>✍️</span>
+              <span>Oración Íntima</span>
+            </button>
+            <button onclick="shareBhavaText()" class="px-4 py-3 rounded-2xl border border-night-700 bg-night-850 hover:bg-night-800 text-xs text-parchment-300 flex items-center justify-center" title="Copiar verso devocional">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tríada Mística: Śaraṇāgati, Kīrtana & Prema -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+        <div class="p-5 rounded-2xl altar-card">
+          <div class="text-saffron-400 font-cinzel text-xl font-bold mb-1">Śaraṇāgati</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-parchment-400 mb-1">Rendición Absoluta</div>
+          <p class="text-xs text-parchment-300">Soltar la pesada pretensión de gobernar el cosmos con la propia preocupación.</p>
+        </div>
+        <div class="p-5 rounded-2xl altar-card">
+          <div class="text-rosepetal-400 font-cinzel text-xl font-bold mb-1">Smaraṇa</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-parchment-400 mb-1">El Recuerdo Continuo</div>
+          <p class="text-xs text-parchment-300">Mantener el hilo de la presencia amorosa en medio de cualquier circunstancia terrenal.</p>
+        </div>
+        <div class="p-5 rounded-2xl altar-card">
+          <div class="text-saffron-400 font-cinzel text-xl font-bold mb-1">Prema</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-parchment-400 mb-1">Amor Desinteresado</div>
+          <p class="text-xs text-parchment-300">Amar sin condición ni cálculo: la dicha de amar es la propia recompensa.</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ================= SECCIÓN 2: ALTAR DEL VACIAMIENTO (ŚARAṆĀGATI) ================= -->
+    <section id="view-altar" class="view-content hidden space-y-6">
+      
+      <div class="max-w-2xl mx-auto text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-saffron-400 font-cinzel font-bold">Kenosis & Śaraṇāgati · El Arte de Entregar</span>
+        <h2 class="text-3xl font-serif font-bold text-parchment-100">El Altar del Vaciamiento</h2>
+        <p class="text-sm text-parchment-300">
+          Dios no puede llenar un cuenco que ya está colmado de ego, queja y necesidad de control. Deposita aquí tu carga y déjala arder en la luz del Amor.
+        </p>
+      </div>
+
+      <div class="max-w-2xl mx-auto altar-card rounded-3xl p-6 sm:p-10 space-y-6 relative overflow-hidden">
+        
+        <!-- Indicador de Fases -->
+        <div class="grid grid-cols-3 gap-2 border-b border-night-700 pb-4">
+          <button onclick="setAltarStep(1)" id="altar-step-btn-1" class="py-2 text-xs font-cinzel font-bold border-b-2 border-saffron-500 text-saffron-400">
+            1. Nombrar la Carga
+          </button>
+          <button onclick="setAltarStep(2)" id="altar-step-btn-2" class="py-2 text-xs font-cinzel font-bold border-b-2 border-transparent text-parchment-400">
+            2. Ofrenda al Fuego
+          </button>
+          <button onclick="setAltarStep(3)" id="altar-step-btn-3" class="py-2 text-xs font-cinzel font-bold border-b-2 border-transparent text-parchment-400">
+            3. Descanso Sagrado
+          </button>
+        </div>
+
+        <!-- Paso 1: Nombrar la carga -->
+        <div id="altar-step-1" class="space-y-4">
+          <div class="border-l-4 border-rosepetal-500 pl-4 py-1">
+            <h3 class="font-bold text-base text-parchment-100">¿Qué carga intenta gobernar tu ego en este instante?</h3>
+            <p class="text-xs text-parchment-400">La angustia del futuro, el miedo a la escasez, el resentimiento, o la exigencia de tener razón.</p>
+          </div>
+          
+          <textarea id="altar-burden-input" rows="4" class="w-full bg-night-850 border border-night-700 rounded-2xl p-4 text-sm text-parchment-100 placeholder-parchment-400 focus:outline-none focus:border-saffron-500 resize-none" placeholder="Ejemplo: Llevo días obsesionado con el desenlace de este proyecto y siento miedo a fracasar. Mi mente no confía y quiere forzar las cosas..."></textarea>
+          
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="text-parchment-400 self-center">Cargas comunes:</span>
+            <button onclick="setBurdenPreset('Miedo visceral a la incertidumbre y no tener el control')" class="px-2.5 py-1 bg-night-800 rounded-lg text-parchment-300 hover:text-saffron-400">Miedo al Control</button>
+            <button onclick="setBurdenPreset('Resentimiento y herida hacia una persona cercana')" class="px-2.5 py-1 bg-night-800 rounded-lg text-parchment-300 hover:text-saffron-400">Resentimiento</button>
+            <button onclick="setBurdenPreset('Angustia constante por el dinero y la seguridad')" class="px-2.5 py-1 bg-night-800 rounded-lg text-parchment-300 hover:text-saffron-400">Ansiedad Material</button>
+            <button onclick="setBurdenPreset('Sensación de insuficiencia y exigencia perfeccionista')" class="px-2.5 py-1 bg-night-800 rounded-lg text-parchment-300 hover:text-saffron-400">Perfeccionismo</button>
+          </div>
+
+          <div class="flex justify-end pt-3">
+            <button onclick="prepareOfferingStep2()" class="px-6 py-2.5 bg-saffron-600 hover:bg-saffron-500 text-night-950 font-cinzel font-bold rounded-xl text-xs uppercase tracking-wider">
+              Llevar al Fuego del Altar →
+            </button>
+          </div>
+        </div>
+
+        <!-- Paso 2: El Fuego de la Ofrenda (Disolución) -->
+        <div id="altar-step-2" class="space-y-6 hidden text-center">
+          
+          <div class="relative w-48 h-48 mx-auto my-2 flex items-center justify-center">
+            <!-- Halo místico de fuego -->
+            <div id="flame-halo" class="absolute inset-0 rounded-full bg-gradient-to-tr from-saffron-500/20 to-rosepetal-500/20 blur-2xl animate-pulse"></div>
+            
+            <div class="w-36 h-36 rounded-full bg-night-850 border border-saffron-500/40 flex flex-col items-center justify-center p-4 relative shadow-2xl">
+              <span class="text-4xl animate-bounce">🔥</span>
+              <span class="text-[10px] font-cinzel text-saffron-400 font-bold tracking-widest uppercase mt-2">Homa Interior</span>
+            </div>
+          </div>
+
+          <div id="offering-box" class="p-5 bg-night-850 rounded-2xl border border-saffron-500/30 max-w-lg mx-auto">
+            <p class="text-xs uppercase font-cinzel text-parchment-400 font-bold mb-1">Carga a Ofrendar:</p>
+            <p id="offering-text-display" class="font-serif italic text-base text-parchment-100">
+              «Mi carga...»
+            </p>
+          </div>
+
+          <p class="text-xs text-parchment-300 max-w-md mx-auto">
+            «Señor / Amado: te entrego esto que no puedo cargar por mí mismo. No es mío, es Tuyo. Haz con ello lo que sea más sabio.»
+          </p>
+
+          <div class="flex items-center justify-center space-x-3 pt-2">
+            <button onclick="setAltarStep(1)" class="px-4 py-2 border border-night-700 rounded-xl text-xs font-cinzel text-parchment-300">
+              ← Modificar
+            </button>
+            <button id="burn-offering-btn" onclick="executeOfferingBurn()" class="px-8 py-3 bg-gradient-to-r from-rosepetal-600 to-saffron-600 hover:from-rosepetal-500 hover:to-saffron-500 text-parchment-100 font-cinzel font-bold rounded-2xl text-xs uppercase tracking-widest shadow-xl">
+              Consumir en el Fuego del Amor 🕊️
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Paso 3: Descanso en la Presencia (Kenosis) -->
+        <div id="altar-step-3" class="space-y-5 hidden text-center">
+          
+          <div class="text-4xl">🪷</div>
+
+          <div class="border-l-4 border-saffron-500 pl-4 py-2 max-w-lg mx-auto text-left bg-night-850/70 p-4 rounded-r-2xl">
+            <h3 class="font-cinzel text-sm font-bold text-saffron-400 uppercase tracking-wider">Afirmación de Descanso y Entrega</h3>
+            <p class="text-sm font-serif italic text-parchment-100 mt-1 leading-relaxed">
+              «Ya no llevo yo el peso del mundo. En Tus manos descanso; hazme un instrumento limpio de Tu paz y Tu amor. Todo está bien.»
+            </p>
+          </div>
+
+          <p class="text-xs text-parchment-300 max-w-md mx-auto">
+            Siente el alivio físico en tus hombros y en tu pecho. El cuenco se ha vaciado; ahora la Presencia habita en ti.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-4">
+            <button onclick="saveAltarOfferingToJournal()" class="w-full sm:w-auto px-6 py-2.5 bg-saffron-600 hover:bg-saffron-500 text-night-950 font-cinzel font-bold rounded-xl text-xs uppercase tracking-wider shadow-lg">
+              📜 Guardar en el Diario del Corazón
+            </button>
+            <button onclick="resetAltar()" class="px-4 py-2.5 border border-night-700 rounded-xl text-xs font-cinzel text-parchment-300 hover:text-saffron-400">
+              Nueva Ofrenda
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SECCIÓN 3: JAPA MĀLĀ (108 CUENTAS DE AMOR) ================= -->
+    <section id="view-japa" class="view-content hidden space-y-6">
+      
+      <div class="max-w-2xl mx-auto text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-saffron-400 font-cinzel font-bold">Nāma-Japa · Smaraṇa</span>
+        <h2 class="text-3xl font-serif font-bold text-parchment-100">El Rosario del Recuerdo Íntimo</h2>
+        <p class="text-sm text-parchment-300">
+          Repetir el Nombre sagrado no es una fórmula mágica: es una caricia continua de la mente hacia la Presencia amada.
+        </p>
+      </div>
+
+      <div class="max-w-md mx-auto altar-card rounded-3xl p-6 sm:p-8 text-center relative space-y-6">
+        
+        <!-- Selector de Nombre / Mantra Sagrado -->
+        <div>
+          <label class="block text-xs uppercase font-cinzel font-bold text-parchment-400 mb-1.5">Nombre Sagrado o Clave del Corazón</label>
+          <select id="japa-mantra-select" onchange="changeJapaMantra()" class="w-full bg-night-850 border border-night-700 rounded-xl px-4 py-2.5 text-xs text-saffron-400 font-cinzel focus:outline-none focus:border-saffron-500">
+            <option value="Rāma">Rāma (La Dicha Suprema)</option>
+            <option value="Oṃ Namo Nārāyaṇāya">Oṃ Namo Nārāyaṇāya (Entrega al Refugio Universal)</option>
+            <option value="Kṛṣṇa Prema">Kṛṣṇa Prema (El Amor Atractivo Absoluto)</option>
+            <option value="Hu / El Amado">Hu · Amado (El Aliento Divino Sufí)</option>
+            <option value="Señor, Ten Misericordia">Kyrie Eleison (Oración del Corazón Hesicasta)</option>
+            <option value="Paz y Confianza">Paz, Confianza y Entrega (Universal)</option>
+          </select>
+        </div>
+
+        <!-- Mālā Visual Circular SVG (108 Cuentas) -->
+        <div class="relative w-64 h-64 mx-auto flex items-center justify-center">
+          
+          <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+            <!-- Anillo de fondo -->
+            <circle cx="50" cy="50" r="42" stroke="rgba(245, 158, 11, 0.15)" stroke-width="5" fill="transparent"/>
+            <!-- Anillo de progreso dinámico -->
+            <circle id="mala-progress-circle" cx="50" cy="50" r="42" stroke="#f59e0b" stroke-width="5" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round" fill="transparent" class="transition-all duration-300"/>
+          </svg>
+
+          <!-- Botón Táctil Central de la Cuenta -->
+          <button id="mala-tap-btn" onclick="tapMalaBead()" class="absolute inset-4 rounded-full bg-gradient-to-tr from-night-900 via-night-850 to-night-800 border-2 border-saffron-500/40 hover:border-saffron-400 flex flex-col items-center justify-center text-center p-4 active:scale-95 transition shadow-2xl focus:outline-none">
+            <span class="text-xs uppercase font-cinzel font-semibold text-rosepetal-400 tracking-wider" id="mala-mantra-display">Rāma</span>
+            <span class="text-5xl font-serif font-bold text-parchment-100 my-1" id="mala-counter">0</span>
+            <span class="text-[10px] uppercase font-cinzel text-parchment-400 tracking-widest">de 108 cuentas</span>
+          </button>
+
+        </div>
+
+        <!-- Información de Rondas & Controles -->
+        <div class="flex items-center justify-between border-t border-night-700/80 pt-4 text-xs font-cinzel">
+          <div class="text-left">
+            <span class="text-parchment-400 block text-[10px] uppercase">Mālās Completados:</span>
+            <span class="font-bold text-saffron-400 text-sm" id="mala-rounds">0 rondas</span>
+          </div>
+
+          <div class="flex items-center space-x-2">
+            <button onclick="undoMalaBead()" class="px-3 py-1.5 border border-night-700 hover:border-parchment-400 rounded-xl text-parchment-400 hover:text-parchment-100" title="Deshacer una cuenta">
+              ↩ Deshacer
+            </button>
+            <button onclick="resetMala()" class="px-3 py-1.5 border border-night-700 hover:border-rosepetal-500 rounded-xl text-rosepetal-400" title="Reiniciar mālā actual">
+              Reiniciar
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SECCIÓN 4: LAS 9 PUERTAS DE LA DEVOCIÓN (NAVADHĀ) ================= -->
+    <section id="view-navadha" class="view-content hidden space-y-6">
+      
+      <div class="max-w-2xl mx-auto text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-saffron-400 font-cinzel font-bold">Bhāgavata Purāṇa 7.5.23</span>
+        <h2 class="text-3xl font-serif font-bold text-parchment-100">Navadhā Bhakti: Las 9 Vías</h2>
+        <p class="text-sm text-parchment-300">
+          Nueve avenidas sagradas para abrir el corazón. Cada ser humano posee una afinidad natural: descubre cuál de ellas es tu puerta hacia lo divino hoy.
+        </p>
+      </div>
+
+      <!-- Cuadrícula de las 9 Vías -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        
+        <!-- 1. Śravaṇa -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">👂</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">1. Śravaṇa</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">Escuchar lo Sagrado</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Nutrir el oído interior con cantos devocionales, historias de santos o silencio contemplativo, silenciando el chismorreo del mundo.
+          </p>
+          <button onclick="setQuickPractice('Śravaṇa', 'Hoy escucharé un kīrtan o un texto místico durante 15 minutos sin hacer otra cosa al mismo tiempo.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Śravaṇa
+          </button>
+        </div>
+
+        <!-- 2. Kīrtana -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🎶</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">2. Kīrtana</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">Cantar la Alabanza</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Celebrar con la voz la belleza divina. Cantar no para impresionar a nadie, sino para que la garganta se convierta en flauta de Dios.
+          </p>
+          <button onclick="setQuickPractice('Kīrtana', 'Cantaré suavemente un nombre sagrado mientras camino o cocino, convirtiendo la acción en oración cantada.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Kīrtana
+          </button>
+        </div>
+
+        <!-- 3. Smaraṇa -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">📿</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">3. Smaraṇa</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">El Recuerdo Continuo</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Recordar la Presencia divina a lo largo del día. Crear pequeños puentes de memoria en medio de las tareas ordinarias.
+          </p>
+          <button onclick="setQuickPractice('Smaraṇa', 'Pondré una alarma cada dos horas para cerrar los ojos durante 10 segundos y decir: Dios está aquí conmigo.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Smaraṇa
+          </button>
+        </div>
+
+        <!-- 4. Pāda-sevana -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">👣</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">4. Pāda-sevana</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">Servir a los Pies</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Humildad en acción: ver los pies del Señor en cada ser humano vulnerable, en la tierra que pisamos y en los enfermos.
+          </p>
+          <button onclick="setQuickPractice('Pāda-sevana', 'Haré un acto humilde de servicio anónimo para alguien en mi casa o entorno sin esperar que nadie me lo agradezca.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Pāda-sevana
+          </button>
+        </div>
+
+        <!-- 5. Arcana -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🕯️</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">5. Arcana</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">La Ofrenda Ritual</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Ofrendar una vela, un vaso de agua pura, incienso o una flor en tu altar físico o en el espacio sagrado de tu propio pecho.
+          </p>
+          <button onclick="setQuickPractice('Arcana', 'Encenderé una vela hoy dedicándola exclusivamente a pedir paz para todos los seres afligidos.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Arcana
+          </button>
+        </div>
+
+        <!-- 6. Vandana -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🙇</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">6. Vandana</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">La Reverencia Profunda</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Inclinarse con reverencia genuina. Desmantelar la soberbia egóica postrando la cabeza por debajo del corazón.
+          </p>
+          <button onclick="setQuickPractice('Vandana', 'Me postraré en soledad antes de acostarme, tocando el suelo con la frente en señal de gratitud total por la vida.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Vandana
+          </button>
+        </div>
+
+        <!-- 7. Dāsya -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🤝</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">7. Dāsya</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">El Siervo Fiel</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Vivir como el mayordomo fiel de una casa noble: cuidar del cuerpo, la familia y el trabajo sabiendo que nada es propiedad propia.
+          </p>
+          <button onclick="setQuickPractice('Dāsya', 'Trataré mi trabajo hoy como un encargo sagrado: no para engordar mi ego, sino para cuidar bien de la encomienda.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Dāsya
+          </button>
+        </div>
+
+        <!-- 8. Sakhya -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🫂</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">8. Sakhya</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">La Amistad Íntima</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            Hablar con Dios como con tu amigo más íntimo y entrañable. Sin formalismos acartonados: con total sinceridad y confianza.
+          </p>
+          <button onclick="setQuickPractice('Sakhya', 'Le contaré al Amado en voz baja mis miedos más secretos mientras paseo, como quien conversa con un viejo camarada.')" class="w-full py-2 bg-night-850 hover:bg-saffron-500/20 border border-saffron-500/30 rounded-xl text-xs font-cinzel text-saffron-400 font-semibold">
+            Encarnar Sakhya
+          </button>
+        </div>
+
+        <!-- 9. Ātma-nivedana -->
+        <div class="altar-card rounded-2xl p-5 space-y-3 border border-night-700 hover:border-saffron-500/50 transition">
+          <div class="flex items-center justify-between">
+            <span class="text-2xl">🕊️</span>
+            <span class="text-[10px] font-cinzel font-bold text-saffron-400 uppercase tracking-widest">9. Ātma-nivedana</span>
+          </div>
+          <h3 class="font-cinzel text-base font-bold text-parchment-100">La Entrega Total</h3>
+          <p class="text-xs text-parchment-300 leading-relaxed">
+            La culminación de Bhakti: la entrega completa del propio ser. Ya no hay 'yo' y 'Tú', solo el océano inmenso del Amor divino.
+          </p>
+          <button onclick="setQuickPractice('Ātma-nivedana', 'Al respirar, diré: «No vivo yo, es Tu vida la que vive en mí. Toma mis ojos, mis manos y mi corazón».')" class="w-full py-2 bg-gradient-to-r from-rosepetal-900 to-saffron-600/40 hover:opacity-90 border border-saffron-500/40 rounded-xl text-xs font-cinzel text-parchment-100 font-semibold">
+            Encarnar Ātma-nivedana
+          </button>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= SECCIÓN 5: DIARIO DEL CORAZÓN (HṚDAYA PATRA) ================= -->
+    <section id="view-journal" class="view-content hidden space-y-6">
+      
+      <div class="max-w-2xl mx-auto text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-saffron-400 font-cinzel font-bold">Hṛdaya Patra · Cartas al Amado</span>
+        <h2 class="text-3xl font-serif font-bold text-parchment-100">El Diario del Corazón Rendido</h2>
+        <p class="text-sm text-parchment-300">
+          Un espacio íntimo y confidencial para volcar tus oraciones, agradecimientos, desahogos y actos de entrega cotidiana.
+        </p>
+      </div>
+
+      <!-- Formulario para Nueva Carta/Oración -->
+      <div class="altar-card rounded-3xl p-6 sm:p-8 space-y-5">
+        <h3 class="font-cinzel text-base font-bold border-b border-night-700 pb-3 flex items-center justify-between text-parchment-100">
+          <span>Nueva Ofrenda Escrita</span>
+          <span class="text-xs font-sans font-normal text-parchment-400" id="journal-current-date">Hoy</span>
+        </h3>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs uppercase font-cinzel font-bold text-parchment-300 mb-1">Motivo o Situación</label>
+            <input type="text" id="journal-subject" placeholder="Ej: Momentos de duda laboral / Inmensa gratitud matutina..." class="w-full bg-night-850 border border-night-700 rounded-xl px-4 py-2.5 text-sm text-parchment-100 focus:outline-none focus:border-saffron-500">
+          </div>
+          <div>
+            <label class="block text-xs uppercase font-cinzel font-bold text-parchment-300 mb-1">Actitud Devocional</label>
+            <select id="journal-attitude" class="w-full bg-night-850 border border-night-700 rounded-xl px-3 py-2.5 text-sm text-parchment-100 focus:outline-none focus:border-saffron-500">
+              <option value="Confianza & Rendición">Confianza & Rendición (Śaraṇāgati)</option>
+              <option value="Alabanza & Gratitud">Alabanza & Gratitud (Kīrtana)</option>
+              <option value="Duelo / Desahogo Sincero">Duelo / Desahogo Sincero (Viraha)</option>
+              <option value="Petición de Instrumento">Petición de Instrumento ("Hazme de Ti")</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs uppercase font-cinzel font-bold text-saffron-400 mb-1">Carta íntima al Amado / Oración del alma</label>
+          <textarea id="journal-content" rows="3" placeholder="Escribe con franqueza absoluta: lo que temes, lo que amas, lo que hoy decides dejar en Sus manos..." class="w-full bg-night-850 border border-night-700 rounded-xl p-3 text-sm text-parchment-100 focus:outline-none focus:border-saffron-500 resize-none"></textarea>
+        </div>
+
+        <div class="flex justify-end pt-2">
+          <button onclick="saveManualJournalEntry()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-saffron-600 to-saffron-500 hover:from-saffron-500 text-night-950 font-cinzel font-bold text-xs uppercase tracking-wider shadow-lg">
+            Ofrendar en el Diario
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Filtros y Exportación -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-4">
+        <div class="flex items-center space-x-2 w-full sm:w-auto">
+          <input type="text" id="journal-search-input" oninput="renderJournalEntries()" placeholder="Buscar en cartas al Amado..." class="bg-night-850 border border-night-700 rounded-xl px-4 py-2 text-xs text-parchment-100 focus:outline-none focus:border-saffron-500 w-full sm:w-64">
+        </div>
+        <div class="flex items-center space-x-2 w-full sm:w-auto justify-end">
+          <button onclick="exportJournalJSON()" class="px-3 py-2 border border-night-700 rounded-xl text-xs font-cinzel text-parchment-300 hover:text-saffron-400 hover:bg-night-850">
+            Exportar JSON
+          </button>
+          <button onclick="exportJournalTXT()" class="px-3 py-2 border border-night-700 rounded-xl text-xs font-cinzel text-parchment-300 hover:text-saffron-400 hover:bg-night-850">
+            Descargar Texto
+          </button>
+        </div>
+      </div>
+
+      <!-- Lista Histórica de Entradas -->
+      <div id="journal-entries-container" class="space-y-4">
+        <!-- Generado por JavaScript -->
+      </div>
+
+    </section>
+
+    <!-- ================= SECCIÓN 6: COMPENDIO DEVOCIONAL ================= -->
+    <section id="view-compendium" class="view-content hidden space-y-6">
+      
+      <div class="max-w-2xl mx-auto text-center space-y-2">
+        <span class="text-xs uppercase tracking-widest text-saffron-400 font-cinzel font-bold">Poesía Mística & Textos Sagrados</span>
+        <h2 class="text-3xl font-serif font-bold text-parchment-100">Compendio de la Llama Viva</h2>
+        <p class="text-sm text-parchment-300">
+          De los bosques de Vrindavan a los claustros de Castilla y las tabernas de Shiraz: el mismo fuego de amor expresado en distintos lenguajes.
+        </p>
+      </div>
+
+      <!-- Filtros por Tradición -->
+      <div class="flex flex-wrap items-center justify-center gap-2 max-w-3xl mx-auto">
+        <button onclick="filterCompendium('all')" class="bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-saffron-500/40 bg-saffron-500 text-night-950" data-cat="all">Todos</button>
+        <button onclick="filterCompendium('vedico')" class="bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-night-700 text-parchment-300 hover:border-saffron-500/40" data-cat="vedico">Bhakti Sūtras & Gītā</button>
+        <button onclick="filterCompendium('sufi')" class="bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-night-700 text-parchment-300 hover:border-saffron-500/40" data-cat="sufi">Mística Sufí (Rumi / Kabir)</button>
+        <button onclick="filterCompendium('cristiano')" class="bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-night-700 text-parchment-300 hover:border-saffron-500/40" data-cat="cristiano">San Juan de la Cruz & Teresa</button>
+        <button onclick="filterCompendium('mirabai')" class="bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-night-700 text-parchment-300 hover:border-saffron-500/40" data-cat="mirabai">Mirabai & Amor Extático</button>
+      </div>
+
+      <!-- Buscador -->
+      <div class="max-w-md mx-auto">
+        <input type="text" id="comp-search-box" oninput="searchCompendium()" placeholder="Buscar por autor, texto, palabra clave..." class="w-full bg-night-850 border border-night-700 rounded-2xl px-4 py-2.5 text-xs text-parchment-100 focus:outline-none focus:border-saffron-500">
+      </div>
+
+      <!-- Cuadrícula de Versos -->
+      <div id="compendium-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-4">
+        <!-- Renderizado dinámico -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================= MODAL DE ORACIÓN RÁPIDA ================= -->
+  <div id="modal-note" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div class="altar-card w-full max-w-lg rounded-3xl p-6 shadow-2xl space-y-4 border border-saffron-500/40">
+      <div class="flex items-center justify-between border-b border-night-700 pb-3">
+        <h3 class="font-cinzel text-base font-bold text-parchment-100">Oración Íntima al Corazón</h3>
+        <button onclick="closeBhavaNoteModal()" class="text-parchment-400 hover:text-saffron-400 text-xl font-bold">&times;</button>
+      </div>
+      <p class="text-xs text-parchment-300" id="modal-bhava-ref">
+        Consagrado al aforismo activo.
+      </p>
+      <textarea id="modal-note-text" rows="4" class="w-full bg-night-850 border border-night-700 rounded-xl p-3 text-sm text-parchment-100 focus:outline-none focus:border-saffron-500 resize-none" placeholder="¿Qué palabras brotan de tu alma ante esta enseñanza?"></textarea>
+      
+      <div class="flex justify-end space-x-2 pt-2">
+        <button onclick="closeBhavaNoteModal()" class="px-4 py-2 border border-night-700 rounded-xl text-xs font-cinzel text-parchment-300">Cancelar</button>
+        <button onclick="saveModalBhavaNote()" class="px-5 py-2 bg-saffron-600 hover:bg-saffron-500 text-night-950 font-cinzel font-bold rounded-xl text-xs uppercase tracking-wider">Consagrar Ofrenda</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= PIE DE PÁGINA ================= -->
+  <footer class="border-t border-night-800 mt-12 py-8 text-center text-xs text-parchment-400">
+    <div class="max-w-4xl mx-auto px-4 space-y-2">
+      <div class="font-serif italic text-base text-saffron-400">
+        «Para venir a poseerlo todo, no quieras poseer algo en nada.» — San Juan de la Cruz
+      </div>
+      <p class="text-[11px] text-parchment-400 font-cinzel">BHAKTI · PREMA · Vol. IV de la Tetralogía Contemplativa · Sin dependencias, libre y offline.</p>
+    </div>
+  </footer>
+
+  <!-- ================= SCRIPT: LÓGICA & SÍNTESIS DE ARMONIO Y CRÓTALOS ================= -->
+  <script>
+    /* =====================================================================
+       BASE DE DATOS DEVOCIONAL UNIVERSAL (BHAVĀS & VERSOS)
+       ===================================================================== */
+    const BHAVAS_DATA = [
+      {
+        id: "narada-2",
+        source: "Nārada Bhakti Sūtras 2",
+        tradition: "vedico",
+        bhav: "Parama Prema Rūpā",
+        sanskrit: "sā tv asmin parama-prema-rūpā |",
+        phonetic: "saa tv asmin parama-prema-ruupaa",
+        translation: "La devoción es, en su naturaleza más pura y consumada, la forma del amor supremo e incondicional hacia lo Divino.",
+        insight: "Bhakti no es pedir favores ni negociar con Dios. Es el anhelo puro de fundir la pequeña voluntad personal en el Amor infinito, reconociendo que todo lo que tenemos y somos ya le pertenece.",
+        practice: "Ante tu próxima tarea del día, suspira interiormente y di: «Esto no lo hago por mi vanidad o mi miedo; lo ofrendo como una flor en el altar de la Vida»."
+      },
+      {
+        id: "gita-18-66",
+        source: "Bhagavad Gītā 18.66",
+        tradition: "vedico",
+        bhav: "Śaraṇāgati (Rendición Suprema)",
+        sanskrit: "sarva-dharmān parityajya mām ekaṁ śaraṇaṁ vraja |",
+        phonetic: "sarva-dharmaan pari-tyajya maam ekam sharanam vraja",
+        translation: "Abandona toda pretensión de justificarte por tus solas obras; entrégate únicamente a Mí como tu único refugio. Yo te liberaré de toda aflicción; no temas.",
+        insight: "La rendición no es claudicación perezosa: es la suprema valentía de soltar el timón egóico. Cuando admites que no puedes salvarte solo con tus cálculos, la Gracia infinita toma el timón.",
+        practice: "Ante un problema que no consigues resolver hoy, suelta los brazos hacia los costados y susurra: «Te lo entrego. No soy yo quien gobierna; haz Tú lo que sea mejor»."
+      },
+      {
+        id: "rumi-barreras",
+        source: "Yalāl ad-Dīn Rūmī",
+        tradition: "sufi",
+        bhav: "Desmantelar la Defensa",
+        sanskrit: "«Tu tarea no es buscar el amor, sino buscar y encontrar todas las barreras dentro de ti que has construido contra él.»",
+        phonetic: "[ Mathnawī · Diwan-e Shams ]",
+        translation: "El amor divino no está lejos esperando ser alcanzado; es la propia atmósfera de tu alma. Lo que debes remover son los muros de orgullo, miedo y resentimiento.",
+        insight: "El ego siempre pone condiciones para amar: 'amaré cuando el otro cambie', 'amaré cuando no duela'. El místico sabe que el amor se activa precisamente soltando esas barreras.",
+        practice: "Identifica a una persona hacia la que sientas frialdad. Nota el muro defensivo en tu pecho y decide bajar la guardia por un minuto, deseándole bien en silencio."
+      },
+      {
+        id: "sanjuan-nada",
+        source: "San Juan de la Cruz",
+        tradition: "cristiano",
+        bhav: "Kenosis (Vaciamiento)",
+        sanskrit: "«Para venir a saberlo todo, no quieras saber algo en nada. Para venir a serlo todo, no quieras ser algo en nada.»",
+        phonetic: "[ Subida del Monte Carmelo ]",
+        translation: "Solo cuando el alma se vacía de sus vanas apetencias particulares, puede ser inundada por la luz total de Dios.",
+        insight: "El vacío místico no es depresión ni nihilismo; es espacio fértil. Cuando vacías tus bolsillos espirituales de certezas y pretensiones de santidad, Dios los llena con Su presencia viva.",
+        practice: "Siéntate durante 2 minutos en completo silencio sin esperar nada: sin esperar visiones, paz ni sensaciones especiales. Quédate simplemente disponible para Él."
+      },
+      {
+        id: "mirabai-copa",
+        source: "Mīrābāī (Poesía Devocional)",
+        tradition: "mirabai",
+        bhav: "Amor Intrépido",
+        sanskrit: "«He bebido la copa de amor extático; mi corazón ya no tiene amo terrenal.»",
+        phonetic: "[ Padāvalī de Mirabai ]",
+        translation: "Quien ha probado el néctar de la comunión divina queda libre de la necesidad de aprobación ajena y de las cadenas de la opinión social.",
+        insight: "El amor devocional otorga una soberana libertad: dejas de mendigar migajas de aprecio terrenal porque sabes que tu verdadero valor descansa en ser amado por el Infinito.",
+        practice: "Renuncia hoy a buscar un cumplido o validación externa. Guarda silencio sobre tus propios méritos y goza de ser conocido por Dios en lo secreto."
+      },
+      {
+        id: "kabir-callejon",
+        source: "Kabīr Dās",
+        tradition: "sufi",
+        bhav: "El Callejón del Amor",
+        sanskrit: "«El callejón del amor es tan estrecho que en él no caben dos: o está el ego, o está el Amado.»",
+        phonetic: "[ Kabir Granthavali ]",
+        translation: "Donde hay reclamo egóico de 'yo soy', 'a mí me deben', 'mi prestigio', no puede reinar la Presencia divina. Al menguar el yo, florece Él.",
+        insight: "No puedes llevarte tu auto-importancia al santuario interior. Cada vez que cedes el protagonismo o perdonas una ofensa, el callejón se despeja para el Amado.",
+        practice: "En una conversación hoy, escucha atentamente a la otra persona sin intervenir para hablar de ti ni de tus anécdotas."
+      },
+      {
+        id: "gita-12-8",
+        source: "Bhagavad Gītā 12.8",
+        tradition: "vedico",
+        bhav: "Mayy Eva Mana Ādhatsva",
+        sanskrit: "mayy eva mana ādhatsva mayi buddhiṁ niveśaya |",
+        phonetic: "mayy eva mana aadhatsva mayi buddhim niveshaya",
+        translation: "Fija tu mente sólo en Mí y deposita en Mí tu discernimiento; así vivirás eternamente en Mí, sin duda alguna.",
+        insight: "Tanto la mente emocional (*manas*) como la inteligencia discriminativa (*buddhi*) encuentran su puerto seguro cuando se orientan hacia la Presencia suprema.",
+        practice: "Dedica los primeros 60 segundos tras despertar y los últimos antes de dormir a posar la mente en el Nombre sagrado antes de pensar en las obligaciones."
+      }
+    ];
+
+    /* =====================================================================
+       ESTADO Y PERSISTENCIA (LOCALSTORAGE)
+       ===================================================================== */
+    const STORAGE_KEY_JOURNAL = 'bhakti_journal_entries_v1';
+    const STORAGE_KEY_STREAK = 'bhakti_streak_v1';
+    const STORAGE_KEY_ACTIVE = 'bhakti_active_bhava_v1';
+    const STORAGE_KEY_MALA = 'bhakti_mala_state_v1';
+
+    let currentBhava = BHAVAS_DATA[0];
+    let journalEntries = [];
+    let practiceStreak = { count: 0, lastDate: null };
+    let malaState = { count: 0, rounds: 0, mantra: "Rāma" };
+    let currentCompFilter = 'all';
+
+    function initApp() {
+      // Cargar racha de ofrendas
+      try {
+        const savedStreak = localStorage.getItem(STORAGE_KEY_STREAK);
+        if (savedStreak) practiceStreak = JSON.parse(savedStreak);
+      } catch (e) { console.error(e); }
+      updateStreakDisplay();
+
+      // Cargar diario
+      try {
+        const savedJournal = localStorage.getItem(STORAGE_KEY_JOURNAL);
+        if (savedJournal) journalEntries = JSON.parse(savedJournal);
+      } catch (e) { journalEntries = []; }
+      renderJournalEntries();
+
+      // Cargar estado de Mālā
+      try {
+        const savedMala = localStorage.getItem(STORAGE_KEY_MALA);
+        if (savedMala) malaState = JSON.parse(savedMala);
+      } catch (e) { console.error(e); }
+      updateMalaUI();
+
+      // Cargar o elegir verso diario
+      try {
+        const savedId = localStorage.getItem(STORAGE_KEY_ACTIVE);
+        if (savedId) {
+          const found = BHAVAS_DATA.find(b => b.id === savedId);
+          if (found) currentBhava = found;
+        } else {
+          const dayOfYear = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (1000 * 60 * 60 * 24));
+          currentBhava = BHAVAS_DATA[dayOfYear % BHAVAS_DATA.length];
+        }
+      } catch (e) { currentBhava = BHAVAS_DATA[0]; }
+
+      renderCurrentBhava();
+      renderCompendium();
+
+      // Fecha en diario
+      const now = new Date();
+      document.getElementById('journal-current-date').textContent = now.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'long' });
+    }
+
+    /* =====================================================================
+       NAVEGACIÓN ENTRE PESTAÑAS
+       ===================================================================== */
+    function switchTab(tabId) {
+      document.querySelectorAll('.view-content').forEach(view => view.classList.add('hidden'));
+      const activeView = document.getElementById(`view-${tabId}`);
+      if (activeView) activeView.classList.remove('hidden');
+
+      // Botones navegación desktop
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('tab-active'));
+      const activeNav = document.getElementById(`nav-${tabId}`);
+      if (activeNav) activeNav.classList.add('tab-active');
+
+      // Botones móvil
+      document.querySelectorAll('[id^="mob-nav-"]').forEach(btn => btn.classList.remove('tab-active'));
+      const activeMobNav = document.getElementById(`mob-nav-${tabId}`);
+      if (activeMobNav) activeMobNav.classList.add('tab-active');
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* =====================================================================
+       NOTIFICACIÓN TOAST SUTIL
+       ===================================================================== */
+    let toastTimeout;
+    function showToast(msg, icon = '🌹') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').textContent = msg;
+      document.getElementById('toast-icon').textContent = icon;
+
+      toast.classList.remove('opacity-0', 'translate-y-20', 'pointer-events-none');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.add('opacity-0', 'translate-y-20', 'pointer-events-none');
+        toast.classList.remove('opacity-100', 'translate-y-0');
+      }, 3500);
+    }
+
+    /* =====================================================================
+       BHAVĀ VIVA (VERSO DEL DÍA)
+       ===================================================================== */
+    function renderCurrentBhava() {
+      document.getElementById('daily-source-tag').textContent = currentBhava.source;
+      document.getElementById('daily-bhav-tag').textContent = currentBhava.bhav;
+      document.getElementById('daily-sanskrit').textContent = currentBhava.sanskrit;
+      document.getElementById('daily-phonetic').textContent = currentBhava.phonetic;
+      document.getElementById('daily-translation').textContent = `«${currentBhava.translation}»`;
+      document.getElementById('daily-insight').textContent = currentBhava.insight;
+      document.getElementById('daily-practice').textContent = currentBhava.practice;
+
+      try {
+        localStorage.setItem(STORAGE_KEY_ACTIVE, currentBhava.id);
+      } catch (e) {}
+      checkIfBhavaLivedToday();
+    }
+
+    function pickRandomBhava() {
+      const others = BHAVAS_DATA.filter(b => b.id !== currentBhava.id);
+      currentBhava = others[Math.floor(Math.random() * others.length)];
+      renderCurrentBhava();
+      playManjiraSound(650);
+      showToast(`Nuevo verso evocado: ${currentBhava.source}`, '🕯️');
+    }
+
+    function setBhavaById(id) {
+      const found = BHAVAS_DATA.find(b => b.id === id);
+      if (found) {
+        currentBhava = found;
+        renderCurrentBhava();
+        switchTab('daily');
+        playManjiraSound(700);
+        showToast(`Aforismo fijado para ofrendar hoy: ${currentBhava.source}`, '🌹');
+      }
+    }
+
+    function checkIfBhavaLivedToday() {
+      const today = new Date().toISOString().split('T')[0];
+      const isLived = practiceStreak.lastDate === today;
+      const btn = document.getElementById('btn-mark-lived');
+      const txt = document.getElementById('btn-lived-text');
+
+      if (isLived) {
+        btn.classList.remove('from-saffron-600', 'to-saffron-500');
+        btn.classList.add('from-rosepetal-700', 'to-rosepetal-600', 'text-parchment-100');
+        txt.textContent = 'Ofrenda vivida hoy con amor ✓';
+      } else {
+        btn.classList.add('from-saffron-600', 'to-saffron-500');
+        btn.classList.remove('from-rosepetal-700', 'to-rosepetal-600', 'text-parchment-100');
+        txt.textContent = 'Ofrendar mi jornada hoy';
+      }
+    }
+
+    function markBhavaLived() {
+      const today = new Date().toISOString().split('T')[0];
+      if (practiceStreak.lastDate === today) {
+        showToast('Tu corazón ya ha ofrendado la práctica de hoy.', '🌹');
+        return;
+      }
+
+      const yesterday = new Date();
+      yesterday.setDate(yesterday.getDate() - 1);
+      const yesterdayStr = yesterday.toISOString().split('T')[0];
+
+      if (practiceStreak.lastDate === yesterdayStr) {
+        practiceStreak.count += 1;
+      } else {
+        practiceStreak.count = 1;
+      }
+
+      practiceStreak.lastDate = today;
+      try {
+        localStorage.setItem(STORAGE_KEY_STREAK, JSON.stringify(practiceStreak));
+      } catch (e) {}
+
+      updateStreakDisplay();
+      checkIfBhavaLivedToday();
+      playManjiraSound(528);
+      showToast('Ofrenda consagrada: Que el Amor supremo guíe cada respiración.', '🌹');
+    }
+
+    function updateStreakDisplay() {
+      const el = document.getElementById('streak-counter');
+      const c = practiceStreak.count || 0;
+      el.textContent = `${c} ${c === 1 ? 'ofrenda' : 'ofrendas'}`;
+    }
+
+    function shareBhavaText() {
+      const txt = `*${currentBhava.source}*\n"${currentBhava.sanskrit}"\n\nSignificado:\n${currentBhava.translation}\n\nMicro-Práctica de Entrega:\n${currentBhava.practice}\n\n— BHAKTI · El Fuego de la Entrega`;
+      copyToClipboardText(txt);
+      showToast('Verso devocional copiado al portapapeles.', '📋');
+    }
+
+    function copyToClipboardText(str) {
+      const temp = document.createElement('textarea');
+      temp.value = str;
+      temp.style.position = 'fixed';
+      temp.style.left = '-9999px';
+      document.body.appendChild(temp);
+      temp.select();
+      try { document.execCommand('copy'); } catch (e) { console.error(e); }
+      document.body.removeChild(temp);
+    }
+
+    /* =====================================================================
+       ALTAR DEL VACIAMIENTO (ŚARAṆĀGATI)
+       ===================================================================== */
+    let currentAltarStep = 1;
+    let offeringBurdenText = "";
+
+    function setAltarStep(step) {
+      currentAltarStep = step;
+      document.getElementById('altar-step-1').classList.toggle('hidden', step !== 1);
+      document.getElementById('altar-step-2').classList.toggle('hidden', step !== 2);
+      document.getElementById('altar-step-3').classList.toggle('hidden', step !== 3);
+
+      for (let i = 1; i <= 3; i++) {
+        const btn = document.getElementById(`altar-step-btn-${i}`);
+        if (i === step) {
+          btn.className = "py-2 text-xs font-cinzel font-bold border-b-2 border-saffron-500 text-saffron-400";
+        } else {
+          btn.className = "py-2 text-xs font-cinzel font-bold border-b-2 border-transparent text-parchment-400";
+        }
+      }
+    }
+
+    function setBurdenPreset(txt) {
+      document.getElementById('altar-burden-input').value = txt;
+    }
+
+    function prepareOfferingStep2() {
+      const val = document.getElementById('altar-burden-input').value.trim();
+      if (!val) {
+        showToast('Escribe primero la carga o apego que deseas soltar.', '⚠️');
+        return;
+      }
+      offeringBurdenText = val;
+      document.getElementById('offering-text-display').textContent = `«${val}»`;
+      const offeringBox = document.getElementById('offering-box');
+      offeringBox.classList.remove('dissolving');
+      offeringBox.style.opacity = '1';
+      document.getElementById('burn-offering-btn').disabled = false;
+      setAltarStep(2);
+    }
+
+    function executeOfferingBurn() {
+      const offeringBox = document.getElementById('offering-box');
+      const burnBtn = document.getElementById('burn-offering-btn');
+      burnBtn.disabled = true;
+
+      // Sonido de campana celestial y fuego
+      playManjiraSound(432);
+      setTimeout(() => playManjiraSound(648), 600);
+      setTimeout(() => playManjiraSound(864), 1400);
+
+      offeringBox.classList.add('dissolving');
+
+      setTimeout(() => {
+        setAltarStep(3);
+        showToast('La carga ha sido consumida en el fuego de la entrega.', '🕊️');
+      }, 2300);
+    }
+
+    function saveAltarOfferingToJournal() {
+      const entry = {
+        id: Date.now().toString(),
+        date: new Date().toISOString(),
+        subject: "Ofrenda de Vaciamiento en el Altar",
+        attitude: "Confianza & Rendición",
+        content: `Carga entregada al Amor: "${offeringBurdenText}".\n\nAfirmación: En Tus manos descanso; ya no cargo yo este peso.`
+      };
+
+      journalEntries.unshift(entry);
+      try {
+        localStorage.setItem(STORAGE_KEY_JOURNAL, JSON.stringify(journalEntries));
+      } catch (e) {}
+
+      renderJournalEntries();
+      playManjiraSound(528);
+      showToast('Consagrado en el Diario del Corazón Rendido.', '📜');
+      resetAltar();
+      switchTab('journal');
+    }
+
+    function resetAltar() {
+      document.getElementById('altar-burden-input').value = '';
+      offeringBurdenText = '';
+      setAltarStep(1);
+    }
+
+    /* =====================================================================
+       JAPA MĀLĀ (108 CUENTAS DE RECUERDO DEVOCIONAL)
+       ===================================================================== */
+    function changeJapaMantra() {
+      const val = document.getElementById('japa-mantra-select').value;
+      malaState.mantra = val;
+      saveMalaState();
+      updateMalaUI();
+      showToast(`Nombre sagrado enfocado: ${val}`, '📿');
+    }
+
+    function tapMalaBead() {
+      // Vibración táctil si el dispositivo lo soporta
+      if (navigator.vibrate) {
+        navigator.vibrate(25);
+      }
+
+      malaState.count += 1;
+      playBeadTapSound(malaState.count);
+
+      // Si completa el mālā de 108 cuentas
+      if (malaState.count >= 108) {
+        malaState.rounds += 1;
+        malaState.count = 0;
+        playManjiraSound(528);
+        setTimeout(() => playManjiraSound(792), 400);
+        showToast(`¡Mālā de 108 cuentas completado con devoción! (${malaState.rounds} rondas)`, '🌹');
+      }
+
+      saveMalaState();
+      updateMalaUI();
+    }
+
+    function undoMalaBead() {
+      if (malaState.count > 0) {
+        malaState.count -= 1;
+        saveMalaState();
+        updateMalaUI();
+      }
+    }
+
+    function resetMala() {
+      malaState.count = 0;
+      saveMalaState();
+      updateMalaUI();
+      showToast('Mālā reiniciado a 0.');
+    }
+
+    function updateMalaUI() {
+      document.getElementById('mala-counter').textContent = malaState.count;
+      document.getElementById('mala-rounds').textContent = `${malaState.rounds} ${malaState.rounds === 1 ? 'ronda' : 'rondas'}`;
+      document.getElementById('mala-mantra-display').textContent = malaState.mantra;
+      document.getElementById('japa-mantra-select').value = malaState.mantra;
+
+      // Actualizar arco de progreso SVG (perímetro radio 42 = 2 * PI * 42 = 263.89)
+      const maxStroke = 263.89;
+      const progress = (malaState.count / 108) * maxStroke;
+      const offset = maxStroke - progress;
+      document.getElementById('mala-progress-circle').style.strokeDashoffset = offset;
+    }
+
+    function saveMalaState() {
+      try {
+        localStorage.setItem(STORAGE_KEY_MALA, JSON.stringify(malaState));
+      } catch (e) {}
+    }
+
+    /* =====================================================================
+       LAS 9 VÍAS DE LA DEVOCIÓN (NAVADHĀ BHAKTI)
+       ===================================================================== */
+    function setQuickPractice(gateName, practiceText) {
+      document.getElementById('journal-subject').value = `Práctica de ${gateName}`;
+      document.getElementById('journal-attitude').value = "Petición de Instrumento";
+      document.getElementById('journal-content').value = practiceText;
+      switchTab('journal');
+      playManjiraSound(600);
+      showToast(`Puerta activa: ${gateName}. Puedes consagrar tu compromiso aquí.`, '🕊️');
+    }
+
+    /* =====================================================================
+       DIARIO DEL CORAZÓN RENDIDO (HṚDAYA PATRA)
+       ===================================================================== */
+    function saveManualJournalEntry() {
+      const subject = document.getElementById('journal-subject').value.trim();
+      const attitude = document.getElementById('journal-attitude').value;
+      const content = document.getElementById('journal-content').value.trim();
+
+      if (!subject && !content) {
+        showToast('Escribe unas palabras para ofrendar tu carta.', '⚠️');
+        return;
+      }
+
+      const entry = {
+        id: Date.now().toString(),
+        date: new Date().toISOString(),
+        subject: subject || 'Oración íntima',
+        attitude: attitude,
+        content: content || 'Descanso en el silencio del Amor divino.'
+      };
+
+      journalEntries.unshift(entry);
+      try {
+        localStorage.setItem(STORAGE_KEY_JOURNAL, JSON.stringify(journalEntries));
+      } catch (e) {}
+
+      document.getElementById('journal-subject').value = '';
+      document.getElementById('journal-content').value = '';
+
+      renderJournalEntries();
+      playManjiraSound(528);
+      showToast('Carta consagrada en el Diario del Corazón.', '🌹');
+    }
+
+    function renderJournalEntries() {
+      const container = document.getElementById('journal-entries-container');
+      const search = (document.getElementById('journal-search-input')?.value || '').toLowerCase();
+
+      const filtered = journalEntries.filter(entry => {
+        return (
+          entry.subject.toLowerCase().includes(search) ||
+          entry.attitude.toLowerCase().includes(search) ||
+          entry.content.toLowerCase().includes(search)
+        );
+      });
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="text-center py-12 border border-dashed border-night-700 rounded-3xl p-8 altar-card">
+            <div class="text-3xl mb-2 text-saffron-500/50">🌹</div>
+            <h4 class="font-cinzel text-base font-bold text-parchment-200">El Altar de Cartas está en Silencio</h4>
+            <p class="text-xs text-parchment-400 max-w-sm mx-auto mt-1">
+              Aún no hay ofrendas registradas. Utiliza el formulario o el Altar del Vaciamiento para depositar tus oraciones más íntimas.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => {
+        const d = new Date(item.date);
+        const dateStr = d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+
+        return `
+          <div class="altar-card rounded-2xl p-5 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-night-700/80 pb-2">
+              <div class="flex items-center space-x-2">
+                <span class="text-xs px-2.5 py-0.5 rounded-full bg-night-850 border border-saffron-500/30 text-saffron-400 font-cinzel font-semibold">${escapeHtml(item.attitude)}</span>
+              </div>
+              <div class="flex items-center space-x-2 text-xs text-parchment-400">
+                <span>${dateStr}</span>
+                <button onclick="deleteJournalEntry('${item.id}')" class="hover:text-rosepetal-400 p-1" title="Retirar ofrenda">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <div class="text-sm font-semibold text-parchment-100">
+              <span class="text-xs uppercase tracking-wider text-parchment-400 block font-normal font-cinzel">Motivo:</span>
+              ${escapeHtml(item.subject)}
+            </div>
+
+            <div class="text-xs text-parchment-200 bg-night-850/90 p-4 rounded-xl border border-saffron-500/20 leading-relaxed font-serif text-sm italic">
+              ${escapeHtml(item.content).replace(/\n/g, '<br>')}
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function deleteJournalEntry(id) {
+      journalEntries = journalEntries.filter(e => e.id !== id);
+      try {
+        localStorage.setItem(STORAGE_KEY_JOURNAL, JSON.stringify(journalEntries));
+      } catch (e) {}
+      renderJournalEntries();
+      showToast('Carta retirada del registro.');
+    }
+
+    function exportJournalJSON() {
+      if (journalEntries.length === 0) {
+        showToast('No hay cartas para exportar.', 'ℹ️');
+        return;
+      }
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(journalEntries, null, 2));
+      const dl = document.createElement('a');
+      dl.setAttribute("href", dataStr);
+      dl.setAttribute("download", `bhakti_corazon_rendido_${new Date().toISOString().split('T')[0]}.json`);
+      document.body.appendChild(dl);
+      dl.click();
+      dl.remove();
+      showToast('Archivo JSON descargado.', '💾');
+    }
+
+    function exportJournalTXT() {
+      if (journalEntries.length === 0) {
+        showToast('No hay cartas para exportar.', 'ℹ️');
+        return;
+      }
+      let content = "=========================================================\n";
+      content += "  BHAKTI · CARTAS AL AMADO (HṚDAYA PATRA)\n";
+      content += "=========================================================\n\n";
+
+      journalEntries.forEach((e, idx) => {
+        content += `[Carta ${idx + 1}] — ${new Date(e.date).toLocaleString()}\n`;
+        content += `Actitud: ${e.attitude}\n`;
+        content += `Motivo: ${e.subject}\n`;
+        content += `Contenido:\n${e.content}\n`;
+        content += "---------------------------------------------------------\n\n";
+      });
+
+      const blob = new Blob([content], { type: "text/plain;charset=utf-8" });
+      const url = URL.createObjectURL(blob);
+      const dl = document.createElement('a');
+      dl.href = url;
+      dl.download = `bhakti_oraciones_${new Date().toISOString().split('T')[0]}.txt`;
+      document.body.appendChild(dl);
+      dl.click();
+      document.body.removeChild(dl);
+      URL.revokeObjectURL(url);
+      showToast('Cartas descargadas en texto plano.', '📄');
+    }
+
+    /* =====================================================================
+       COMPENDIO DEVOCIONAL
+       ===================================================================== */
+    function filterCompendium(cat) {
+      currentCompFilter = cat;
+      document.querySelectorAll('.bhakti-filter-btn').forEach(btn => {
+        if (btn.getAttribute('data-cat') === cat) {
+          btn.className = "bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-saffron-500/40 bg-saffron-500 text-night-950";
+        } else {
+          btn.className = "bhakti-filter-btn px-3 py-1.5 rounded-full text-xs font-cinzel font-semibold border border-night-700 text-parchment-300 hover:border-saffron-500/40";
+        }
+      });
+      renderCompendium();
+    }
+
+    function searchCompendium() {
+      renderCompendium();
+    }
+
+    function renderCompendium() {
+      const container = document.getElementById('compendium-grid');
+      const search = (document.getElementById('comp-search-box')?.value || '').toLowerCase();
+
+      const filtered = BHAVAS_DATA.filter(b => {
+        const matchesCat = currentCompFilter === 'all' || b.tradition === currentCompFilter;
+        const matchesSearch = b.source.toLowerCase().includes(search) ||
+                              b.sanskrit.toLowerCase().includes(search) ||
+                              b.translation.toLowerCase().includes(search) ||
+                              b.bhav.toLowerCase().includes(search) ||
+                              b.practice.toLowerCase().includes(search);
+        return matchesCat && matchesSearch;
+      });
+
+      container.innerHTML = filtered.map(b => {
+        return `
+          <div class="altar-card rounded-3xl p-6 flex flex-col justify-between space-y-4 border border-night-700 hover:border-saffron-500/50 transition">
+            <div class="space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-0.5 rounded-md font-cinzel text-xs font-bold bg-night-850 text-saffron-400 border border-saffron-500/30">
+                  ${escapeHtml(b.source)}
+                </span>
+                <span class="text-[10px] uppercase font-cinzel tracking-wider text-rosepetal-400">
+                  ${escapeHtml(b.bhav)}
+                </span>
+              </div>
+
+              <h3 class="font-serif text-lg font-bold text-parchment-100 italic">
+                ${escapeHtml(b.sanskrit)}
+              </h3>
+              <p class="text-xs text-saffron-400 font-medium">
+                «${escapeHtml(b.translation)}»
+              </p>
+              <p class="text-xs text-parchment-300 leading-relaxed pt-1">
+                ${escapeHtml(b.insight)}
+              </p>
+            </div>
+
+            <div class="pt-3 border-t border-night-700 flex items-center justify-between gap-2">
+              <div class="text-[11px] text-rosepetal-300 truncate flex-1 font-medium">
+                🌹 <strong>Práctica:</strong> ${escapeHtml(b.practice)}
+              </div>
+              <button onclick="setBhavaById('${b.id}')" class="px-3 py-1.5 rounded-xl bg-night-850 hover:bg-saffron-500 hover:text-night-950 text-xs font-cinzel font-semibold text-parchment-200 transition border border-night-700 hover:border-saffron-500">
+                Ofrendar hoy
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    /* =====================================================================
+       MODAL DE ORACIÓN RÁPIDA
+       ===================================================================== */
+    function openBhavaNoteModal() {
+      document.getElementById('modal-bhava-ref').textContent = `Inspirado en ${currentBhava.source}: "${currentBhava.translation}"`;
+      document.getElementById('modal-note-text').value = '';
+      document.getElementById('modal-note').classList.remove('hidden');
+    }
+
+    function closeBhavaNoteModal() {
+      document.getElementById('modal-note').classList.add('hidden');
+    }
+
+    function saveModalBhavaNote() {
+      const val = document.getElementById('modal-note-text').value.trim();
+      if (!val) {
+        showToast('Escribe unas palabras para tu oración.', '⚠️');
+        return;
+      }
+
+      const entry = {
+        id: Date.now().toString(),
+        date: new Date().toISOString(),
+        subject: `Contemplación: ${currentBhava.source}`,
+        attitude: "Alabanza & Gratitud",
+        content: val
+      };
+
+      journalEntries.unshift(entry);
+      try {
+        localStorage.setItem(STORAGE_KEY_JOURNAL, JSON.stringify(journalEntries));
+      } catch (e) {}
+
+      renderJournalEntries();
+      closeBhavaNoteModal();
+      playManjiraSound(528);
+      showToast('Oración consagrada en el Diario.', '🌹');
+    }
+
+    /* =====================================================================
+       SÍNTESIS NATIVA EN TIEMPO REAL: ARMONIO DEVOCIONAL & CRÓTALOS (MANJIRA)
+       ===================================================================== */
+    let audioCtx = null;
+    let isHarmoniumPlaying = false;
+    let harmoniumNodes = [];
+    let harmoniumLFO = null;
+
+    function initAudioContext() {
+      if (!audioCtx) {
+        const AudioClass = window.AudioContext || window.webkitAudioContext;
+        audioCtx = new AudioClass();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    // Crótalos / Manjira sagrada (campana de bronce con armónicos agudos)
+    function playManjiraSound(fundamental = 528) {
+      try {
+        initAudioContext();
+        const now = audioCtx.currentTime;
+
+        const partials = [
+          { f: fundamental * 1.0, g: 0.28, d: 3.8 },
+          { f: fundamental * 2.76, g: 0.16, d: 2.5 },
+          { f: fundamental * 5.41, g: 0.08, d: 1.2 }
+        ];
+
+        partials.forEach(p => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(p.f, now);
+          osc.frequency.linearRampToValueAtTime(p.f + 0.4, now + p.d);
+
+          gain.gain.setValueAtTime(0, now);
+          gain.gain.linearRampToValueAtTime(p.g, now + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + p.d);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+
+          osc.start(now);
+          osc.stop(now + p.d);
+        });
+      } catch (e) {
+        console.warn('Audio protegido por navegador hasta interacción:', e);
+      }
+    }
+
+    // Sonido sutil al tocar cada cuenta del mālā
+    function playBeadTapSound(countIndex) {
+      try {
+        initAudioContext();
+        const now = audioCtx.currentTime;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        // Variación armónica suave según la cuenta
+        const baseFreq = (countIndex % 12 === 0) ? 440 : 330;
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(baseFreq, now);
+
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.08, now + 0.01);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+
+        osc.start(now);
+        osc.stop(now + 0.2);
+      } catch (e) {}
+    }
+
+    // Síntesis de Armonio Indio en Dron continuo (Tonalidad Re: D3, A3, D4)
+    function toggleHarmonium() {
+      initAudioContext();
+      isHarmoniumPlaying = !isHarmoniumPlaying;
+
+      const btn = document.getElementById('harmonium-btn');
+      const icon = document.getElementById('harmonium-icon');
+      const text = document.getElementById('harmonium-btn-text');
+
+      if (isHarmoniumPlaying) {
+        startHarmoniumDrone();
+        btn.classList.add('bg-saffron-500/20', 'border-saffron-400');
+        icon.textContent = '🔊';
+        text.textContent = 'Pausar';
+        showToast('Armonio devocional en Re activado en segundo plano.', '🪗');
+      } else {
+        stopHarmoniumDrone();
+        btn.classList.remove('bg-saffron-500/20', 'border-saffron-400');
+        icon.textContent = '🪗';
+        text.textContent = 'Armonio';
+        showToast('Armonio pausado.');
+      }
+    }
+
+    function startHarmoniumDrone() {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+
+      // Frecuencias para Re mayor cálido devocional (D3: 146.83 Hz, A3: 220 Hz, D4: 293.66 Hz, F#4 suave: 369.99 Hz)
+      const droneVoices = [
+        { f: 146.83, detune: -1.5, type: 'sawtooth', gain: 0.10 },
+        { f: 146.83, detune: +1.5, type: 'sawtooth', gain: 0.10 },
+        { f: 220.00, detune: -0.8, type: 'sawtooth', gain: 0.08 },
+        { f: 293.66, detune: +0.8, type: 'triangle', gain: 0.12 }
+      ];
+
+      // LFO para emular la marea del fuelle de viento del armonio (bellows)
+      harmoniumLFO = audioCtx.createOscillator();
+      const lfoGain = audioCtx.createGain();
+      harmoniumLFO.frequency.setValueAtTime(0.35, now); // Ciclo lento de fuelle (cada ~3s)
+      lfoGain.gain.setValueAtTime(0.04, now);
+      harmoniumLFO.connect(lfoGain);
+      harmoniumLFO.start(now);
+
+      harmoniumNodes = [];
+
+      droneVoices.forEach(v => {
+        const osc = audioCtx.createOscillator();
+        const filter = audioCtx.createBiquadFilter();
+        const gainNode = audioCtx.createGain();
+
+        osc.type = v.type;
+        osc.frequency.setValueAtTime(v.f, now);
+        osc.detune.setValueAtTime(v.detune, now);
+
+        // Filtro paso bajo para el sonido aterciopelado de lengüeta de caña (reed)
+        filter.type = 'lowpass';
+        filter.frequency.setValueAtTime(850, now);
+        filter.Q.setValueAtTime(1.8, now);
+
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(v.gain, now + 1.5);
+
+        // Conectar modulación de fuelle
+        lfoGain.connect(gainNode.gain);
+
+        osc.connect(filter);
+        filter.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+
+        osc.start(now);
+        harmoniumNodes.push({ osc, gainNode });
+      });
+    }
+
+    function stopHarmoniumDrone() {
+      if (!audioCtx) return;
+      const now = audioCtx.currentTime;
+
+      harmoniumNodes.forEach(({ osc, gainNode }) => {
+        try {
+          gainNode.gain.linearRampToValueAtTime(0.0001, now + 0.8);
+          setTimeout(() => {
+            try { osc.stop(); } catch (e) {}
+          }, 850);
+        } catch (e) {}
+      });
+
+      if (harmoniumLFO) {
+        try { harmoniumLFO.stop(now + 0.8); } catch (e) {}
+      }
+
+      harmoniumNodes = [];
+    }
+
+    /* =====================================================================
+       UTILIDADES GENERALES
+       ===================================================================== */
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initApp();
+      document.getElementById('nav-daily')?.classList.add('tab-active');
+      document.getElementById('mob-nav-daily')?.classList.add('tab-active');
+    });
+  </script>
+</body>
+</html>
